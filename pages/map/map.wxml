@@ -1,0 +1,26 @@
+<view class="container">
+  <map
+    class="map"
+    longitude="{{center.lng}}"
+    latitude="{{center.lat}}"
+    scale="{{scale}}"
+    markers="{{markers}}"
+    show-location="true"
+    include-points="{{includePoints}}"
+    enable-zoom="true"
+    enable-scroll="true"
+    enable-rotate="true"
+    bindmarkertap="onMarkerTap"
+  />
+  <view class="stats">
+    <view class="stats-title">按国家/城市统计</view>
+    <view class="stats-list">
+      <block wx:for="{{cityStats}}" wx:key="key">
+        <view class="stats-item">
+          <text class="stats-city">{{item.country}} · {{item.city}}</text>
+          <text class="stats-count">{{item.count}}人</text>
+        </view>
+      </block>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,32 @@
+.map {
+  width: 100%;
+  height: 600rpx;
+  border-radius: 12rpx;
+  overflow: hidden;
+}
+.stats {
+  margin-top: 16rpx;
+  background: #fff;
+  border-radius: 12rpx;
+  padding: 16rpx;
+}
+.stats-title {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #333;
+}
+.stats-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 12rpx 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+.stats-item:last-child {
+  border-bottom: none;
+}
+.stats-city {
+  color: #555;
+}
+.stats-count {
+  color: #1aad19;
+}

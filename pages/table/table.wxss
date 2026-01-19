@@ -1,0 +1,33 @@
+.form {
+  background: #fff;
+  border-radius: 12rpx;
+  padding: 16rpx;
+}
+.input {
+  background: #f7f7f7;
+  border-radius: 8rpx;
+  padding: 12rpx;
+  margin-bottom: 12rpx;
+}
+.list {
+  margin-top: 16rpx;
+  background: #fff;
+  border-radius: 12rpx;
+  padding: 8rpx 0;
+}
+.item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16rpx;
+  border-bottom: 1px solid #f0f0f0;
+}
+.item:last-child {
+  border-bottom: none;
+}
+.name {
+  font-weight: 600;
+}
+.meta {
+  color: #777;
+}

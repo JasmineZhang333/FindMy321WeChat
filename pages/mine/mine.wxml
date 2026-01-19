@@ -1,0 +1,12 @@
+<view class="container">
+  <view class="card">
+    <button type="primary" bindtap="login">微信登录</button>
+  </view>
+  <view class="card">
+    <input class="input" placeholder="姓名" value="{{profile.name}}" bindinput="onInputName" />
+    <input class="input" placeholder="微信号" value="{{profile.wechatId}}" bindinput="onInputWechatId" />
+    <input class="input" placeholder="国家" value="{{profile.country}}" bindinput="onInputCountry" />
+    <input class="input" placeholder="城市" value="{{profile.city}}" bindinput="onInputCity" />
+    <button type="primary" bindtap="saveProfile">保存</button>
+  </view>
+</view>

@@ -1,0 +1,84 @@
+const KEY = 'classmates'
+const PROFILE_KEY = 'myProfile'
+
+function getAll() {
+  return wx.getStorageSync(KEY) || []
+}
+
+function setAll(list) {
+  wx.setStorageSync(KEY, list)
+}
+
+function initFromFile() {
+  const existing = wx.getStorageSync(KEY)
+  if (existing && existing.length) return existing
+  return resetFromFile()
+}
+
+function resetFromFile() {
+  const data = require('../data/classmates.js')
+  wx.setStorageSync(KEY, data)
+  return data
+}
+
+function add(item) {
+  const list = getAll()
+  const id = list.length ? Math.max.apply(null, list.map(x => x.id)) + 1 : 1
+  const newItem = Object.assign({ id }, item)
+  list.push(newItem)
+  setAll(list)
+  return newItem
+}
+
+function update(id, patch) {
+  const list = getAll()
+  const idx = list.findIndex(x => x.id === id)
+  if (idx >= 0) {
+    list[idx] = Object.assign({}, list[idx], patch)
+    setAll(list)
+    return list[idx]
+  }
+  return null
+}
+
+function groupByCityCountry(list) {
+  const map = {}
+  list.forEach(x => {
+    const key = x.country + '-' + x.city
+    if (!map[key]) {
+      map[key] = {
+        country: x.country,
+        city: x.city,
+        names: [],
+        lat: x.location.lat,
+        lng: x.location.lng,
+        count: 0
+      }
+    }
+    map[key].names.push(x.name)
+    map[key].count++
+  })
+  return Object.values(map).sort((a, b) => b.count - a.count)
+}
+
+function getProfile() {
+  return wx.getStorageSync(PROFILE_KEY) || {}
+}
+
+function setProfile(profile) {
+  wx.setStorageSync(PROFILE_KEY, profile)
+}
+
+module.exports = {
+  KEY,
+  PROFILE_KEY,
+  getAll,
+  setAll,
+  initFromFile,
+  resetFromFile,
+  add,
+  update,
+  groupByCityCountry,
+  getProfile,
+  setProfile
+}
