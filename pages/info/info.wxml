@@ -1,0 +1,10 @@
+<view class="container">
+  <view class="list">
+    <block wx:for="{{list}}" wx:key="id">
+      <view class="item">
+        <text class="name">{{item.name}}</text>
+        <text class="meta">{{item.country}} · {{item.city}}</text>
+      </view>
+    </block>
+  </view>
+</view>

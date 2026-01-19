@@ -50,8 +50,8 @@ function groupByCityCountry(list) {
         country: x.country,
         city: x.city,
         names: [],
-        lat: x.location.lat,
-        lng: x.location.lng,
+        lat: Number(x.location.lat),
+        lng: Number(x.location.lng),
         count: 0
       }
     }
