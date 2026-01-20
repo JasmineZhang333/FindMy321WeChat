@@ -1,10 +1,22 @@
 <view class="container">
+  <view class="header">
+    <text class="header-title">同学信息</text>
+  </view>
   <view class="list">
     <block wx:for="{{list}}" wx:key="id">
       <view class="item">
-        <text class="name">{{item.name}}</text>
-        <text class="meta">{{item.country}} · {{item.city}}</text>
+        <view class="left">
+          <view class="avatar">{{item.initial}}</view>
+          <view class="info">
+            <text class="name">{{item.name}}</text>
+            <text class="meta">
+              <text class="location-icon">📍</text>
+              {{item.country}} · {{item.city}}
+            </text>
+          </view>
+        </view>
       </view>
     </block>
+    <view class="total">共 {{list.length}} 位同学</view>
   </view>
 </view>
