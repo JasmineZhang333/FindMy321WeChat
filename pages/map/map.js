@@ -3,10 +3,11 @@ const storage = require('../../utils/storage.js')
 Page({
   data: {
     center: { lat: 30.0, lng: 100.0 },
-    scale: 3,
+    scale: 4,
     markers: [],
     includePoints: [],
     cityStats: [],
+    list: [],
     selectedCity: null
   },
   onShow() {
@@ -20,24 +21,66 @@ Page({
       height: 32,
       iconPath: "../../assets/icons/star.png",
       callout: {
-        content: g.city + '\n' + g.count + '人',
-        display: 'BYCLICK',
+        content: g.city + ' (' + g.count + '人)',
+        display: 'ALWAYS',
         padding: 6,
-        borderRadius: 6
+        borderRadius: 6,
+        fontSize: 12
       }
     }))
     const includePoints = grouped.map(g => ({
       latitude: g.lat,
       longitude: g.lng
     }))
-    const center = includePoints.length
-      ? { lat: includePoints[0].latitude, lng: includePoints[0].longitude }
-      : this.data.center
+    if (includePoints.length > 0) {
+      this.setData({
+        center: { lat: includePoints[0].latitude, lng: includePoints[0].longitude }
+      })
+    }
     this.setData({
       markers,
       includePoints,
       cityStats: grouped,
-      center
+      list: list
+    })
+  },
+  getUserLocation() {
+    wx.getLocation({
+      type: 'gcj02',
+      success: (res) => {
+        this.setData({
+          center: {
+            lat: res.latitude,
+            lng: res.longitude
+          },
+          scale: 12
+        })
+        wx.showToast({
+          title: '已定位',
+          icon: 'success',
+          duration: 1500
+        })
+      },
+      fail: (err) => {
+        console.error('获取位置失败:', err)
+        if (err.errMsg.includes('auth deny')) {
+          wx.showModal({
+            title: '提示',
+            content: '需要您授权位置权限才能使用定位功能',
+            confirmText: '去设置',
+            success: (res) => {
+              if (res.confirm) {
+                wx.openSetting()
+              }
+            }
+          })
+        } else {
+          wx.showToast({
+            title: '定位失败',
+            icon: 'none'
+          })
+        }
+      }
     })
   },
   onMarkerTap(e) {

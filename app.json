@@ -1,7 +1,8 @@
 {
   "pages": [
     "pages/map/map",
-    "pages/info/info"
+    "pages/info/info",
+    "pages/mine/mine"
   ],
   "window": {
     "navigationBarTitleText": "FindMy321",

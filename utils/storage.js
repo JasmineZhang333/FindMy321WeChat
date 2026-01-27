@@ -45,20 +45,35 @@ function groupByCityCountry(list) {
   const map = {}
   list.forEach(x => {
     const key = x.country + '-' + x.city
+    const lat = Number(x.location.lat)
+    const lng = Number(x.location.lng)
+    
+    if (isNaN(lat) || isNaN(lng) || Math.abs(lat) > 90 || Math.abs(lng) > 180) {
+      console.warn('Invalid location for user:', x.name, x.location)
+      return
+    }
+
     if (!map[key]) {
       map[key] = {
         country: x.country,
         city: x.city,
         names: [],
-        lat: Number(x.location.lat),
-        lng: Number(x.location.lng),
+        lat: lat,
+        lng: lng,
         count: 0
       }
     }
     map[key].names.push(x.name)
     map[key].count++
   })
-  return Object.values(map).sort((a, b) => b.count - a.count)
+  
+  const result = Object.values(map).sort((a, b) => b.count - a.count)
+  
+  result.forEach(g => {
+    g.names.sort((a, b) => a.localeCompare(b, 'zh-CN'))
+  })
+  
+  return result
 }
 
 function getProfile() {

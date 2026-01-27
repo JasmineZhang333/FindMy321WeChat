@@ -1,21 +1,29 @@
 <view class="container">
-  <view class="map-container">
-    <map
-      class="map"
-      longitude="{{center.lng}}"
-      latitude="{{center.lat}}"
-      scale="{{scale}}"
-      markers="{{markers}}"
-      show-location="true"
-      include-points="{{includePoints}}"
-      enable-zoom="true"
-      enable-scroll="true"
-      enable-rotate="true"
-      bindmarkertap="onMarkerTap"
-    />
+  <view class="map-wrapper">
+    <view class="map-container">
+      <map
+        class="map"
+        longitude="{{center.lng}}"
+        latitude="{{center.lat}}"
+        scale="{{scale}}"
+        markers="{{markers}}"
+        show-location="true"
+        include-points="{{includePoints}}"
+        enable-zoom="true"
+        enable-scroll="true"
+        enable-rotate="true"
+        bindmarkertap="onMarkerTap"
+      />
+      <view class="location-btn" bindtap="getUserLocation">
+        <text class="location-icon">📍</text>
+      </view>
+    </view>
   </view>
   <view class="stats">
     <view class="stats-title">📍 同学分布</view>
+    <view class="stats-summary">
+      <text class="summary-text">共 {{list.length}} 位同学</text>
+    </view>
     <view class="stats-list">
       <block wx:for="{{cityStats}}" wx:key="key">
         <view class="stats-item">
@@ -23,6 +31,19 @@
           <text class="stats-count">{{item.count}}人</text>
         </view>
       </block>
+    </view>
+  </view>
+  <view class="mask" wx:if="{{selectedCity}}" bindtap="closePopup"></view>
+  <view class="popup" wx:if="{{selectedCity}}">
+    <view class="popup-header">
+      <text class="popup-title">{{selectedCity.country}} · {{selectedCity.city}}</text>
+      <text class="popup-close" bindtap="closePopup">×</text>
+    </view>
+    <view class="popup-body">
+      <view class="popup-count">共 {{selectedCity.count}} 位同学</view>
+      <view class="popup-names">
+        <view class="name-tag" wx:for="{{selectedCity.names}}" wx:key="index">{{item}}</view>
+      </view>
     </view>
   </view>
 </view>
