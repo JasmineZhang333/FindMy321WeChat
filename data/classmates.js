@@ -4,7 +4,7 @@ module.exports = [
   { "id": 3, "name": "邓美宏", "city": "北京", "country": "中国", "location": { "lat": 39.9042, "lng": 116.4074 } },
   { "id": 4, "name": "丁宜涵", "city": "北京", "country": "中国", "location": { "lat": 39.9042, "lng": 116.4074 } },
   { "id": 5, "name": "董彦杰", "city": "纽约", "country": "美国", "location": { "lat": 40.7128, "lng": -74.0060 } },
-  { "id": 6, "name": "董雨莹", "city": "广州", "country": "中国", "location": { "lat": 23.1291, "lng": 113.2644 } },
+  { "id": 6, "name": "董雨莹", "city": "上海", "country": "中国", "location": { "lat": 31.2304, "lng": 121.4737 } },
   { "id": 7, "name": "高世超", "city": "深圳", "country": "中国", "location": { "lat": 22.5431, "lng": 114.0579 } },
   { "id": 8, "name": "葛晅", "city": "成都", "country": "中国", "location": { "lat": 30.5728, "lng": 104.0668 } },
   { "id": 9, "name": "郭城", "city": "深圳", "country": "中国", "location": { "lat": 22.5431, "lng": 114.0579 } },
