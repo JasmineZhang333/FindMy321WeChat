@@ -16,6 +16,7 @@
       "desc": "用于选择与标注同学所在城市位置"
     }
   },
+  "requiredPrivateInfos": ["getLocation"],
   "tabBar": {
     "color": "#8a8a8a",
     "selectedColor": "#1aad19",

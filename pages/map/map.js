@@ -17,9 +17,19 @@ Page({
       id: idx + 1,
       latitude: g.lat,
       longitude: g.lng,
-      width: 32,
-      height: 32,
-      iconPath: "../../assets/icons/star.png",
+      width: 24,
+      height: 24,
+      iconPath: "",
+      label: {
+        content: g.city,
+        display: 'ALWAYS',
+        padding: 4,
+        borderRadius: 4,
+        fontSize: 11,
+        color: '#ffffff',
+        bgColor: '#3b82f6',
+        textAlign: 'center'
+      },
       callout: {
         content: g.city + ' (' + g.count + '人)',
         display: 'ALWAYS',
