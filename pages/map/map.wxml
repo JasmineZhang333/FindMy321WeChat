@@ -8,7 +8,6 @@
         scale="{{scale}}"
         markers="{{markers}}"
         show-location="true"
-        include-points="{{includePoints}}"
         enable-zoom="true"
         enable-scroll="true"
         enable-rotate="true"

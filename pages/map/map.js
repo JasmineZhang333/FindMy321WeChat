@@ -2,10 +2,9 @@ const storage = require('../../utils/storage.js')
 
 Page({
   data: {
-    center: { lat: 30.0, lng: 100.0 },
+    center: { lat: 35.8617, lng: 104.1954 },
     scale: 4,
     markers: [],
-    includePoints: [],
     cityStats: [],
     list: [],
     selectedCity: null
@@ -38,18 +37,8 @@ Page({
         fontSize: 12
       }
     }))
-    const includePoints = grouped.map(g => ({
-      latitude: g.lat,
-      longitude: g.lng
-    }))
-    if (includePoints.length > 0) {
-      this.setData({
-        center: { lat: includePoints[0].latitude, lng: includePoints[0].longitude }
-      })
-    }
     this.setData({
       markers,
-      includePoints,
       cityStats: grouped,
       list: list
     })
